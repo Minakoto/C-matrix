@@ -68,18 +68,8 @@ int s21_mult_matrix(matrix_t *A, matrix_t *B, matrix_t *result) {
         if(result->matrix) s21_remove_matrix(result);
         res = s21_create_matrix(row, col, result);
         for(int r = 0; r < row; r++) {
-            for(int c = 0; c < col; c++) {
-                result->matrix[r][c] = s21_mult_part(r, c, A, B);
-            }
+            for(int c = 0; c < col; c++) result->matrix[r][c] = s21_mult_part(r, c, A, B);
         }
-    }
-    return res;
-}
-
-double s21_mult_part(int r, int c, matrix_t* A, matrix_t* B) {
-    double res = 0;
-    for(int j = 0; j < A->columns; j++) {
-        res += A->matrix[r][j] * B->matrix[j][c];
     }
     return res;
 }
